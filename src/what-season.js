@@ -1,12 +1,25 @@
-const CustomError = require("../extensions/custom-error");
+import { NotImplementedError } from '../extensions/index.js';
 
-module.exports = function getSeason(date) {
+/**
+ * Extract season from given date and expose the enemy scout!
+ * 
+ * @param {Date | FakeDate} date real or fake date
+ * @returns {String} time of the year
+ * 
+ * @example
+ * 
+ * getSeason(new Date(2020, 02, 31)) => 'spring'
+ * 
+ */
+export default function getSeason(date) {
   if (date == null) {
     return 'Unable to determine the time of year!';
   }
 
-  if (Object.prototype.toString.call(date) !== "[object Date]") {
-    throw Error();
+  try {
+    date.getTime();
+  } catch (error) {
+    throw new Error ('Invalid date!');
   }
 
   switch(date.getMonth()) {
@@ -28,4 +41,4 @@ module.exports = function getSeason(date) {
     case 11:
       return 'autumn';
   }
-};
+}
