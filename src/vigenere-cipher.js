@@ -1,6 +1,25 @@
-const CustomError = require("../extensions/custom-error");
+import { NotImplementedError } from '../extensions/index.js';
 
-class VigenereCipheringMachine {
+/**
+ * Implement class VigenereCipheringMachine that allows us to create
+ * direct and reverse ciphering machines according to task description
+ * 
+ * @example
+ * 
+ * const directMachine = new VigenereCipheringMachine();
+ * 
+ * const reverseMachine = new VigenereCipheringMachine(false);
+ * 
+ * directMachine.encrypt('attack at dawn!', 'alphonse') => 'AEIHQX SX DLLU!'
+ * 
+ * directMachine.decrypt('AEIHQX SX DLLU!', 'alphonse') => 'ATTACK AT DAWN!'
+ * 
+ * reverseMachine.encrypt('attack at dawn!', 'alphonse') => '!ULLD XS XQHIEA'
+ * 
+ * reverseMachine.decrypt('AEIHQX SX DLLU!', 'alphonse') => '!NWAD TA KCATTA'
+ * 
+ */
+export default class VigenereCipheringMachine {
   constructor(isDirect) {
     if (isDirect === false) {
       this.isDirect = false;
@@ -8,8 +27,8 @@ class VigenereCipheringMachine {
   }
 
   encrypt(message, key) {
-    if (message == undefined || key == undefined) {
-      throw Error();
+    if (Object.prototype.toString.call(message) !== "[object String]" && Object.prototype.toString.call(key) !== "[object String]") {
+      throw Error('');
     }
 
     let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -47,8 +66,8 @@ class VigenereCipheringMachine {
     }
   }    
   decrypt(encryptedMessage, key) {
-    if (encryptedMessage == undefined || key == undefined) {
-      throw Error();
+    if (Object.prototype.toString.call(encryptedMessage) !== "[object String]" && Object.prototype.toString.call(key) !== "[object String]") {
+      throw Error('');
     }
 
     let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -86,5 +105,3 @@ class VigenereCipheringMachine {
     }
   }
 }
-
-module.exports = VigenereCipheringMachine;

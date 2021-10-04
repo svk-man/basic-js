@@ -1,6 +1,10 @@
-const CustomError = require("../extensions/custom-error");
+import { NotImplementedError } from '../extensions/index.js';
 
-const chainMaker = {
+/**
+ * Implement chainMaker object according to task description
+ * 
+ */
+export default {
   chains: [],
   getLength() {
     return this.chains.length;
@@ -20,7 +24,7 @@ const chainMaker = {
       this.chains.splice(position, 1);
     } else {
       this.chains = [];
-      throw Error();
+      throw Error('You can\'t remove incorrect link!');
     }
 
     return this;
@@ -44,5 +48,3 @@ const chainMaker = {
     return chainsStr;
   }
 };
-
-module.exports = chainMaker;
