@@ -1,4 +1,4 @@
-import { NotImplementedError } from '../extensions/index.js';
+const { NotImplementedError } = require('../extensions/index.js');
 
 const MODERN_ACTIVITY = 15;
 const HALF_LIFE_PERIOD = 5730;
@@ -17,7 +17,7 @@ const HALF_LIFE_PERIOD = 5730;
  * dateSample('WOOT!') => false
  *
  */
-export default function dateSample(sampleActivity) {
+function dateSample(sampleActivity) {
   if (typeof sampleActivity == "string") {
     let num = Number(sampleActivity);
     if (typeof num == "number" && num > 0) {
@@ -30,3 +30,7 @@ export default function dateSample(sampleActivity) {
 
   return false;
 }
+
+module.exports = {
+  dateSample
+};

@@ -1,4 +1,4 @@
-import { NotImplementedError } from '../extensions/index.js';
+const { NotImplementedError } = require('../extensions/index.js');
 
 /**
  * Given matrix where you have to find cats by ears "^^"
@@ -14,7 +14,7 @@ import { NotImplementedError } from '../extensions/index.js';
  * ]) => 3`
  *
  */
-export default function countCats(matrix) {
+function countCats(matrix) {
   let countCats = 0;
   for (let subMatrix of matrix) {
     for (let subMatrixItem of subMatrix) {
@@ -26,3 +26,7 @@ export default function countCats(matrix) {
   
   return countCats;
 }
+
+module.exports = {
+  countCats
+};
