@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  const s1 = "aabcc";
+  const s2 = "adcaa";
+  console.log(getCommonCharacterCount(s1, s2));
+
+  function getCommonCharacterCount(s1, s2) {
+    const chars1 = s1.split('');
+    const chars2 = s2.split('');
+
+    let count = 0;
+    for (const char1 of chars1) {
+      let char1Index = chars2.indexOf(char1);
+      if (char1Index !== -1) {
+        chars2.splice(char1Index, 1);
+        count++;
+      }
+    }
+
+    return count;
+  }
+  </script>
+</body>
+</html>
