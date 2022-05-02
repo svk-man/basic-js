@@ -27,8 +27,13 @@ class VigenereCipheringMachine {
   }
 
   encrypt(message, key) {
+    const isNoArguments = message === undefined || key === undefined;
+    if (isNoArguments) {
+      throw Error('Incorrect arguments!');
+    }
+
     if (Object.prototype.toString.call(message) !== "[object String]" && Object.prototype.toString.call(key) !== "[object String]") {
-      throw Error('');
+      throw Error('Incorrect arguments!');
     }
 
     let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -39,7 +44,7 @@ class VigenereCipheringMachine {
 
     message = message.toUpperCase();
     key = key.toUpperCase();
-  
+
     if (message.length > key.length) {
       let length = message.length - key.length;
       let repeat = (Math.ceil(length / key.length)) + 1;
@@ -64,10 +69,16 @@ class VigenereCipheringMachine {
     } else {
       return result;
     }
-  }    
+  }
+
   decrypt(encryptedMessage, key) {
+    const isNoArguments = encryptedMessage === undefined || key === undefined;
+    if (isNoArguments) {
+      throw Error('Incorrect arguments!');
+    }
+
     if (Object.prototype.toString.call(encryptedMessage) !== "[object String]" && Object.prototype.toString.call(key) !== "[object String]") {
-      throw Error('');
+      throw Error('Incorrect arguments!');
     }
 
     let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
